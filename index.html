@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's The Best Fit Country For YOUR Nursing Career? | Global Nurse Pathways</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2d5d6b; --ink-soft:#4a7382; --blue:#729db2; --paper:#f9f7f4;
+    --paper-line:#ebedf1; --stamp:#bb5427; --peach:#f8cdba; --muted:#8a97a1;
+    --card-w:460px;
+    --body-font: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    --display-font: "Playfair Display", Georgia, serif;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{
+    background-color:var(--paper);
+    background-image:repeating-linear-gradient(0deg, transparent, transparent 27px, var(--paper-line) 27px, var(--paper-line) 28px);
+    color:var(--ink); font-family:var(--body-font); min-height:100vh;
+    display:flex; align-items:center; justify-content:center; padding:24px 14px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage{width:100%; max-width:var(--card-w); position:relative;}
+  .card{background:#fffdfb; border:1.5px solid var(--ink); border-radius:3px; padding:36px 24px 30px; position:relative; box-shadow:5px 5px 0 rgba(45,93,107,0.10);}
+  .eyebrow{font-family:var(--body-font); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--stamp); margin-bottom:14px; display:block; font-weight:700;}
+  h1.title{font-family:var(--display-font); font-weight:700; font-size:27px; line-height:1.2; margin:0 0 14px; letter-spacing:-0.01em;}
+  .subtitle{font-size:15px; line-height:1.5; color:var(--ink-soft); margin:0 0 12px;}
+  .match-note{display:inline-block; font-size:13px; color:var(--ink); font-weight:700; background:var(--peach); padding:6px 12px; border-radius:20px; margin:0 0 24px;}
+  .btn{display:inline-block; width:100%; text-align:center; background:var(--ink); color:var(--paper); font-family:var(--body-font); font-size:15px; font-weight:700; letter-spacing:0.01em; padding:15px 20px; border:none; border-radius:3px; cursor:pointer; text-decoration:none; transition:transform .12s ease, background .12s ease;}
+  .btn:hover{background:var(--stamp); transform:translateY(-1px);} .btn:active{transform:translateY(0);}
+  .progress-row{display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;}
+  .progress-mono{font-family:var(--body-font); font-size:12px; letter-spacing:0.04em; color:var(--blue); font-weight:700;}
+  .progress-track{flex:1; height:2px; background:var(--paper-line); margin:0 14px; position:relative;}
+  .progress-fill{position:absolute; left:0;top:0;bottom:0; background:var(--stamp); width:0%; transition:width .35s ease;}
+  .stamp{position:absolute; top:-14px; right:-14px; width:60px;height:60px; border:2px dashed var(--stamp); border-radius:50%; display:flex; align-items:center; justify-content:center; transform:rotate(-9deg); background:#fffdfb; font-family:var(--body-font); font-size:10px; color:var(--stamp); font-weight:700; text-align:center; line-height:1.15; opacity:0; animation:stampIn .4s ease forwards;}
+  @keyframes stampIn{0%{opacity:0; transform:rotate(-9deg) scale(1.6);} 60%{opacity:1; transform:rotate(-9deg) scale(0.92);} 100%{opacity:1; transform:rotate(-9deg) scale(1);}}
+  .q-text{font-family:var(--display-font); font-weight:600; font-style:italic; font-size:20px; line-height:1.35; margin:0 0 20px;}
+  .answers{display:flex; flex-direction:column; gap:10px;}
+  .answer{text-align:left; background:none; border:1.5px solid var(--paper-line); border-radius:3px; padding:13px 15px; font-family:var(--body-font); font-size:14.5px; line-height:1.4; color:var(--ink); cursor:pointer; transition:border-color .15s ease, background .15s ease;}
+  .answer:hover{border-color:var(--ink); background:var(--paper);}
+  .screen{display:none;} .screen.active{display:block;}
+  .email-row{display:flex; flex-direction:column; gap:12px; margin-top:6px;}
+  input[type="email"]{font-family:var(--body-font); font-size:15px; padding:14px 16px; border:1.5px solid var(--ink); border-radius:3px; background:#fffdfb; color:var(--ink);}
+  input[type="email"]:focus{outline:2px solid var(--stamp); outline-offset:1px;}
+  .fine-print{font-size:12px; color:var(--muted); margin-top:10px; text-align:center; line-height:1.5;}
+  .preview-list{list-style:none; padding:0; margin:0 0 20px;}
+  .preview-list li{font-size:14px; line-height:1.6; padding-left:18px; position:relative; color:var(--ink-soft); margin-bottom:4px;}
+  .preview-list li:before{content:"—"; position:absolute; left:0; color:var(--stamp);}
+  .result-stamp{width:92px;height:92px; border:3px solid var(--stamp); border-radius:50%; display:flex; align-items:center; justify-content:center; transform:rotate(-6deg); margin:0 auto 18px; font-family:var(--body-font); font-size:9px; letter-spacing:0.08em; color:var(--stamp); text-transform:uppercase; font-weight:700; opacity:0; animation:stampIn .5s ease forwards;}
+  .result-flags{text-align:center; font-size:30px; margin-bottom:6px;}
+  .result-name{font-family:var(--display-font); font-weight:700; font-size:27px; text-align:center; margin:0 0 6px; line-height:1.2;}
+  .result-countries{text-align:center; font-family:var(--body-font); font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--blue); margin-bottom:20px; font-weight:700;}
+  .result-desc{font-size:15px; line-height:1.6; margin-bottom:18px;}
+  .result-block{border-top:1px solid var(--paper-line); padding-top:14px; margin-bottom:14px;}
+  .result-label{font-family:var(--body-font); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--stamp); display:block; margin-bottom:6px; font-weight:700;}
+  .result-block p{margin:0; font-size:14.5px; line-height:1.55;}
+  .pitch{background:var(--peach); border:1px solid var(--paper-line); border-radius:3px; padding:16px; margin:20px 0 16px; font-size:14.5px; line-height:1.55; color:var(--ink);}
+  .aprn-note{display:none; background:var(--paper); border:1px dashed var(--blue); border-radius:3px; padding:14px; margin:0 0 16px; font-size:13.5px; line-height:1.5; color:var(--ink-soft);}
+  .utility-row{display:flex; justify-content:center; gap:18px; margin-top:16px; font-size:13px;}
+  .utility-row a{color:var(--muted); text-decoration:underline; cursor:pointer;} .utility-row a:hover{color:var(--ink);}
+  @media (max-width:380px){.card{padding:28px 18px 24px;} h1.title{font-size:23px;} .q-text{font-size:18px;} .result-name{font-size:23px;}}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="card" id="card">
+
+    <div class="screen active" id="screen-intro">
+      <span class="eyebrow">Global Nurse Pathways</span>
+      <h1 class="title">What's The Best Fit Country For YOUR Nursing Career?</h1>
+      <p class="subtitle">Turn your everyday life as a nurse into a bucket list — match your goals and credentials to a country you can actually live and work in.</p>
+      <button class="btn" onclick="goTo('q1')">Start the quiz!</button>
+    </div>
+
+    <div class="screen" id="screen-q1" data-q="1">
+      <div class="progress-row"><span class="progress-mono">Q 01/08</span><div class="progress-track"><div class="progress-fill" style="width:12%"></div></div></div>
+      <p class="q-text">What's your BIGGEST reason for moving abroad as a nurse right now?</p>
+      <div class="answers">
+        <button class="answer" onclick="answer('A')">Craving better safety and stability</button>
+        <button class="answer" onclick="answer('B')">Want distance from the US, not just change of scenery</button>
+        <button class="answer" onclick="answer('C')">Better balance of pay vs. quality of life</button>
+        <button class="answer" onclick="answer('D')">Long-term relocation for me and my family</button>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-q2" data-q="2">
+      <div class="progress-row"><span class="progress-mono">Q 02/08</span><div class="progress-track"><div class="progress-fill" style="width:25%"></div></div></div>
+      <p class="q-text">What's your clinical background?</p>
+      <div class="answers">
+        <button class="answer" onclick="credentialAnswer('rn')">RN doing direct patient care</button>
+        <button class="answer" onclick="credentialAnswer('aprn')">APRN (NP, CRNA, CNM, or CNS)</button>
+        <button class="answer" onclick="credentialAnswer('global_health')">Global health/humanitarian background (or a strong pull to this)</button>
+        <button class="answer" onclick="credentialAnswer('academic')">Research, academia, or education</button>
+        <button class="answer" onclick="credentialAnswer('unsure')">Not sure yet, still gaining experience!</button>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-q3" data-q="3">
+      <div class="progress-row"><span class="progress-mono">Q 03/08</span><div class="progress-track"><div class="progress-fill" style="width:37%"></div></div></div>
+      <p class="q-text">How do you feel about a long, slow license or visa process?</p>
+      <div class="answers">
+        <button class="answer" onclick="answer('A')">Fine as long as it's straightforward and simple</button>
+        <button class="answer" onclick="answer('B')">Happy to wait if it gets me where I want to go!</button>
+        <button class="answer" onclick="answer('C')">Not an option, I need to move ASAP</button>
+        <button class="answer" onclick="answer('D')">I'm on a 3-5 year timeline anyway</button>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-q4" data-q="4">
+      <div class="progress-row"><span class="progress-mono">Q 04/08</span><div class="progress-track"><div class="progress-fill" style="width:50%"></div></div></div>
+      <p class="q-text">The little rebel in your head says…</p>
+      <div class="answers">
+        <button class="answer" onclick="answer('A')">I don't want to reinvent myself to live abroad</button>
+        <button class="answer" onclick="answer('B')">If I commit, I'm actually doing it!</button>
+        <button class="answer" onclick="answer('C')">I need to know that it will pay off financially first</button>
+        <button class="answer" onclick="answer('D')">Wanderlust is great but I want to plant roots for good</button>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-q5" data-q="5">
+      <div class="progress-row"><span class="progress-mono">Q 05/08</span><div class="progress-track"><div class="progress-fill" style="width:62%"></div></div></div>
+      <p class="q-text">Your current partner (or future!) wants to know what to do about their career. You say:</p>
+      <div class="answers">
+        <button class="answer" onclick="answer('A')">We'll figure it out after we arrive!</button>
+        <button class="answer" onclick="answer('B')">A career pivot would actually be good</button>
+        <button class="answer" onclick="answer('C')">One of us not working for a while is fine</button>
+        <button class="answer" onclick="answer('D')">We need work visa options for both of us</button>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-q6" data-q="6">
+      <div class="progress-row"><span class="progress-mono">Q 06/08</span><div class="progress-track"><div class="progress-fill" style="width:75%"></div></div></div>
+      <p class="q-text">Be honest — how much cultural difference are you comfortable with?</p>
+      <div class="answers">
+        <button class="answer" onclick="answer('A')">I don't want every day to feel like a huge puzzle</button>
+        <button class="answer" onclick="answer('B')">As much as possible — to me that's the whole point!</button>
+        <button class="answer" onclick="answer('C')">Not thinking about that a ton until I work out my budget</button>
+        <button class="answer" onclick="answer('D')">Doesn't matter as much as long as I can integrate eventually</button>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-q7" data-q="7">
+      <div class="progress-row"><span class="progress-mono">Q 07/08</span><div class="progress-track"><div class="progress-fill" style="width:87%"></div></div></div>
+      <p class="q-text">Let's talk money — how would you feel about taking a pay cut to live abroad?</p>
+      <div class="answers">
+        <button class="answer" onclick="answer('A')">Some decrease in salary is fine as long as cost of living balances it out</button>
+        <button class="answer" onclick="answer('B')">I've made peace with lower pay for a life that actually fulfills me</button>
+        <button class="answer" onclick="answer('C')">Non-negotiable, I need to come out ahead</button>
+        <button class="answer" onclick="answer('D')">I'm looking at the full picture, not just the finance piece</button>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-q8" data-q="8">
+      <div class="progress-row"><span class="progress-mono">Q 08/08</span><div class="progress-track"><div class="progress-fill" style="width:100%"></div></div></div>
+      <p class="q-text">If you moved abroad in the next 12 months, what would matter the most to you?</p>
+      <div class="answers">
+        <button class="answer" onclick="answer('A')">Being somewhere with a direct flight home</button>
+        <button class="answer" onclick="answer('B')">Living in a place that's completely different to the US</button>
+        <button class="answer" onclick="answer('C')">Earning well and moving quickly</button>
+        <button class="answer" onclick="answer('D')">Building a real life I love</button>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-email">
+      <span class="eyebrow">Almost there</span>
+      <h1 class="title" style="font-size:24px;">Your results are in!</h1>
+      <ul class="preview-list">
+        <li>Your best-fit country match (or two!)</li>
+        <li>Your #1 strength going into life abroad</li>
+        <li>Your blind spot — the thing that will trip you up</li>
+        <li>The next step that will help you move forward</li>
+      </ul>
+      <p class="subtitle" style="margin-bottom:14px;">Where should I send it?</p>
+      <form id="captureForm" class="email-row" onsubmit="handleSubmit(event)">
+        <input type="email" id="emailInput" name="email" placeholder="you@email.com" required>
+        <input type="text" id="emailWebsite" name="website" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
+        <button type="submit" class="btn" id="emailSubmitBtn">Show me where to move!</button>
+      </form>
+      <p class="fine-print" id="emailError" style="display:none; color:var(--stamp);">Something went wrong on our end — mind trying again?</p>
+    </div>
+
+    <div class="screen" id="result-A">
+      <div class="result-stamp">Cleared</div>
+      <p class="result-flags" id="flags-A"></p>
+      <h2 class="result-name">The Soft Landing</h2>
+      <p class="result-countries" id="countries-A"></p>
+      <p class="result-desc">You don't really want a totally different life, you want your current life without as much fear about the future. English speaking, a familiar healthcare system, a short flight home. You don't want to jump ship and disappear, you just want some breathing room.</p>
+      <div class="aprn-note">A note for APRNs: credential recognition varies more by country than RN licensure — so understand where you're eligible to work before you commit to a country if working in an equivalent role is a non-negotiable.</div>
+      <div class="result-block"><span class="result-label">Your strength</span><p>You know exactly how much change you can sustain and are wary of overcommitting to change that's bigger than you're interested in.</p></div>
+      <div class="result-block"><span class="result-label">Your blind spot</span><p>You don't know where to start and you don't know what you don't know yet — and that's totally ok! Nervous excitement can get mistaken for fear in the body sometimes. It might not be dread… it might just be the first time you've let yourself actually want something that feels this big and exciting!</p></div>
+      <div class="result-block"><span class="result-label">This week</span><p>Nobody's asking you to get on a plane tomorrow or get a permanent tattoo on your face. <span id="tw-A"></span> can be a first step, not an irreversible decision. Pick one small, doable action this week instead of trying to figure out the entire move all at the start.</p></div>
+      <div class="pitch"><p>A strategy session puts you back in the driver's seat of your life &amp; career. You don't just get a plan — you start to see actual proof that moving abroad as a nurse is possible for you when broken into steps small enough that you stop white-knuckling every shift and start making real moves toward a better life.</p></div>
+      <a class="btn" href="https://globalnursepathways.thrivecart.com/move-abroad-strategy-sessions/" target="_blank" rel="noopener">Book a Move Abroad Strategy Session</a>
+      <div class="utility-row"><a onclick="retake()">Retake the quiz</a><a onclick="copyShare()">Share your result</a></div>
+    </div>
+
+    <div class="screen" id="result-B">
+      <div class="result-stamp">Cleared</div>
+      <p class="result-flags" id="flags-B"></p>
+      <h2 class="result-name">The Clean Break</h2>
+      <p class="result-countries" id="countries-B"></p>
+      <p class="result-desc">You're not looking for a copy-paste of your current life — you want palpable distance. Sunshine, outdoors, distance, a slower pace. You're willing to trade proximity for actual peace and you're ready to dive in headfirst.</p>
+      <div class="aprn-note">A note for APRNs: credential recognition varies more by country than RN licensure — so understand where you're eligible to work before you commit to a country if working in an equivalent role is a non-negotiable.</div>
+      <div class="result-block"><span class="result-label">Your strength</span><p>You're super clear on why you're leaving, which makes you far less likely to romanticize where you're going or waste time chasing something you don't actually want.</p></div>
+      <div class="result-block"><span class="result-label">Your blind spot</span><p>You've pictured the lifestyle. Have you pictured the logistics? Shipping your life across an ocean, learning a new healthcare system from scratch, and being super far from the people who really know you. Even for someone who's as ready to leap as you are, the adjustment has growing pains.</p></div>
+      <div class="result-block"><span class="result-label">This week</span><p>Get specific about one real piece of the move — whether that's mapping out the licensure steps, shipping logistics, or job search timeline. You already have the excitement, now we need to plan to make it a reality!</p></div>
+      <div class="pitch"><p>A strategy session is where we turn "I think I want to do this" into an actual sequence, so you get there faster (and your only regret really is that you didn't do it sooner).</p></div>
+      <a class="btn" href="https://globalnursepathways.thrivecart.com/move-abroad-strategy-sessions/" target="_blank" rel="noopener">Book a Move Abroad Strategy Session</a>
+      <div class="utility-row"><a onclick="retake()">Retake the quiz</a><a onclick="copyShare()">Share your result</a></div>
+    </div>
+
+    <div class="screen" id="result-C">
+      <div class="result-stamp">Cleared</div>
+      <p class="result-flags" id="flags-C"></p>
+      <h2 class="result-name">The Fast Track</h2>
+      <p class="result-countries" id="countries-C"></p>
+      <p class="result-desc">Yes, the tax-free paycheck is pretty enticing. But if that were the whole story, you'd have picked somewhere easier. If you're gonna move abroad, you want a change big enough to actually feel like one: a culture, a pace, a world genuinely different from the one you grew up in. You've probably seen a hell of a lot more of the world than most, and you're not scared of the parts that make other people nervous.</p>
+      <div class="aprn-note">A note for APRNs: credential recognition varies more by country than RN licensure — so understand where you're eligible to work before you commit to a country if working in an equivalent role is a non-negotiable.</div>
+      <div class="result-block"><span class="result-label">Your strength</span><p>You're not naive. You know it's not for everyone and you've made peace with that. You're doing it anyway, on YOUR terms.</p></div>
+      <div class="result-block"><span class="result-label">Your blind spot</span><p>Your risk isn't fear, it's trust — in knowing which recruiters are reputable, reviewing your contract, and establishing your backup plan if things go sideways.</p></div>
+      <div class="result-block"><span class="result-label">This week</span><p>Before you talk to any recruiters or potential employers, write down every question you have about safety, contract terms, and what happens if things don't go as planned.</p></div>
+      <div class="pitch"><p>A strategy session is where we go through everything you don't know to ask yet. Contract red flags, backup plans, safety, healthcare, cultural adjustment… so you take the leap with eyes open and full confidence in your plan.</p></div>
+      <a class="btn" href="https://globalnursepathways.thrivecart.com/move-abroad-strategy-sessions/" target="_blank" rel="noopener">Book a Move Abroad Strategy Session</a>
+      <div class="utility-row"><a onclick="retake()">Retake the quiz</a><a onclick="copyShare()">Share your result</a></div>
+    </div>
+
+    <div class="screen" id="result-D">
+      <div class="result-stamp">Cleared</div>
+      <p class="result-flags" id="flags-D"></p>
+      <h2 class="result-name">The Root Setter</h2>
+      <p class="result-countries" id="countries-D"></p>
+      <p class="result-desc">You're not interested in trying out multiple countries to see how they fit. Maybe you've got a family, are planning for retirement, or just want to plant roots somewhere you love. You're not done with nursing, you're done with the bullshit. You want to be respected at work, paid fairly, and actually enjoy your days off. You're thoughtful and patient about the process because it's important to you to do it right, not fast.</p>
+      <div class="aprn-note">A note for APRNs: credential recognition varies more by country than RN licensure — so understand where you're eligible to work before you commit to a country if working in an equivalent role is a non-negotiable.</div>
+      <div class="result-block"><span class="result-label">Your strength</span><p>You're playing the long game on purpose (and you'll be rewarded for it!)</p></div>
+      <div class="result-block"><span class="result-label">Your blind spot</span><p>Choosing the best country for you (and your family) and making all the puzzle pieces fit together neatly can feel impossible. Partner's career, kids' schools, licensing, dependent visas, housing, making sure everyone is happy. Patience can turn into procrastination when all the parts get muddled together.</p></div>
+      <div class="result-block"><span class="result-label">This week</span><p>Sit down and brainstorm all your non-negotiables in one column and the possible countries in the next column. Find the overlap between the two to narrow down your ideal country option.</p></div>
+      <div class="pitch"><p>A strategy session organizes all the moving parts into a manageable plan, so instead of scrambling the whole puzzle in your head, you're working on the next one piece — because people in just your situation have done it before too!</p></div>
+      <a class="btn" href="https://globalnursepathways.thrivecart.com/move-abroad-strategy-sessions/" target="_blank" rel="noopener">Book a Move Abroad Strategy Session</a>
+      <div class="utility-row"><a onclick="retake()">Retake the quiz</a><a onclick="copyShare()">Share your result</a></div>
+    </div>
+
+    <div class="screen" id="result-E">
+      <div class="result-stamp">Cleared</div>
+      <p class="result-flags">🇸🇬</p>
+      <h2 class="result-name">The Wanderer</h2>
+      <p class="result-countries">Singapore</p>
+      <p class="result-desc">You've probably traveled a fair amount already and you want something different, but still safe and modern. The other options on this list just haven't felt like a fit, and you can't always explain why.</p>
+      <div class="result-block"><span class="result-label">Your strength</span><p>You already know the standard bedside-abroad path isn't your path, and you're not forcing yourself into it just because it's the popular option. You're not working within the standard playbook that many nursing professionals default to, and it actually fits your background.</p></div>
+      <div class="result-block"><span class="result-label">Your blind spot</span><p>The order is flipped here, and most people don't realize it until it trips them up. For most countries, you sort licensure first, then find a job. In Singapore, it's job first, then the employer sponsors the rest. This pathway depends a lot more on relationships and networking than paperwork.</p></div>
+      <div class="result-block"><span class="result-label">This week</span><p>Start mapping your skills and credentials and possible connections you can leverage to explore potential options. Look for who's working in the roles you want, and start thinking about how to get in front of them.</p></div>
+      <div class="pitch"><p>My Move Abroad Strategy Sessions help you map out what's realistically possible for your specific background and what direction to go first before you sink months of research into non-viable pathways.</p></div>
+      <a class="btn" href="https://globalnursepathways.thrivecart.com/move-abroad-strategy-sessions/" target="_blank" rel="noopener">Book a Move Abroad Strategy Session</a>
+      <div class="utility-row"><a onclick="retake()">Retake the quiz</a><a onclick="copyShare()">Share your result</a></div>
+    </div>
+
+    <div class="screen" id="result-F">
+      <div class="result-stamp">Cleared</div>
+      <p class="result-flags">🌍</p>
+      <h2 class="result-name">The Field Worker</h2>
+      <p class="result-countries">Global Health / Humanitarian Track</p>
+      <p class="result-desc">You know there's real suffering in the world, and you've got the skills and the drive to actually help. You just don't know how to turn that into something sustainable. And you want to do it ethically, not performatively. As long as you're having an impact that's bigger than you as an individual and putting some good into the world, you've done your job.</p>
+      <div class="result-block"><span class="result-label">Your strength</span><p>You're not chasing a two-week feel-good trip. You're comfortable with being uncomfortable. You want to connect with your inner purpose, not a paycheck. If someone handed you a plane ticket tomorrow and told you to pack your bags, you'd take it!</p></div>
+      <div class="result-block"><span class="result-label">Your blind spot</span><p>Short medical missions feel like the obvious entry point, but they're not always sustainable for you or the community you're serving. It's a marathon, not a sprint, and it takes real relationship-building and a long view, not a quick fix. The key is working with an organization that aligns with your values and can provide the support, housing, and structure you need to make it sustainable for you as a whole person.</p></div>
+      <div class="result-block"><span class="result-label">This week</span><p>Research two or three organizations doing the type of work you're drawn to, and look at what credentials and experience they require to see where you land.</p></div>
+      <div class="pitch"><p>A strategy session helps you figure out how to participate in global health without burning out. It can run in parallel with another path if you're not ready to choose just one, and helps you figure out where to focus your energy — which organizations, connections, and extra trainings will actually move the needle for you.</p></div>
+      <a class="btn" href="https://globalnursepathways.thrivecart.com/move-abroad-strategy-sessions/" target="_blank" rel="noopener">Book a Move Abroad Strategy Session</a>
+      <div class="utility-row"><a onclick="retake()">Retake the quiz</a><a onclick="copyShare()">Share your result</a></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const CONFIG = { segmentId: "6a6061962ac99cdf18a282aa" };
+
+  const scores = {A:0,B:0,C:0,D:0};
+  const countryMeta = {
+    IE:{name:'Ireland', flag:'🇮🇪'}, UK:{name:'The UK', flag:'🇬🇧'}, CA:{name:'Canada', flag:'🇨🇦'},
+    AU:{name:'Australia', flag:'🇦🇺'}, NZ:{name:'New Zealand', flag:'🇳🇿'},
+    AE:{name:'The UAE', flag:'🇦🇪'}, SA:{name:'Saudi Arabia', flag:'🇸🇦'}, SG:{name:'Singapore', flag:'🇸🇬'}
+  };
+  const countryScores = {IE:0,UK:0,CA:0,AU:0,NZ:0,AE:0,SA:0,SG:0};
+  const personaCandidates = { A:['UK','IE','CA'], B:['AU','NZ'], C:['AE','SA'], D:['CA','AU'] };
+
+  const weights = {
+    1:{A:{UK:2,IE:2,CA:1}, B:{AU:2,NZ:2,SG:1}, C:{AE:2,SA:2,SG:1}, D:{CA:2,AU:1,NZ:1,SG:1}},
+    3:{A:{UK:2,IE:2,CA:1}, B:{AU:2,NZ:2}, C:{AE:2,SA:2}, D:{CA:2,SG:1,AU:1,NZ:1}},
+    4:{A:{UK:2,IE:2,CA:1}, B:{AU:2,NZ:2}, C:{AE:2,SA:2}, D:{CA:2,SG:1}},
+    5:{A:{UK:1,IE:1,CA:1}, B:{AU:1,NZ:1}, C:{AE:1,SA:1}, D:{CA:2,AU:1}},
+    6:{A:{UK:1,IE:1,CA:1}, B:{AU:1,NZ:1,SG:1}, C:{AE:1,SA:1}, D:{CA:1,SG:1,AU:1,NZ:1}},
+    7:{A:{UK:1,IE:1,CA:1,AU:1,NZ:1}, B:{NZ:1,IE:1}, C:{AE:2,SA:2,SG:1}, D:{CA:1,SG:1}},
+    8:{A:{UK:2,IE:2,CA:2}, B:{AU:2,NZ:2,SG:1}, C:{AE:2,SA:2}, D:{CA:2,AU:1,SG:1}}
+  };
+
+  let resultType = null;
+  let credential = null;
+  let gatedLetter = null;
+
+  function showScreen(id){
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const el = document.getElementById('screen-' + id) || document.getElementById(id);
+    el.classList.add('active');
+    const stamp = el.querySelector('.stamp, .result-stamp');
+    if(stamp){ stamp.style.animation = 'none'; void stamp.offsetWidth; stamp.style.animation = ''; }
+    if(credential === 'aprn'){ document.querySelectorAll('.aprn-note').forEach(n => n.style.display = 'block'); }
+  }
+  function goTo(id){ showScreen(id); }
+
+  function credentialAnswer(val){
+    credential = val;
+    if(val === 'academic'){ gatedLetter = 'E'; countryScores.SG += 5; }
+    if(val === 'global_health'){ gatedLetter = 'F'; }
+    showScreen('q3');
+  }
+
+  function answer(letter){
+    scores[letter]++;
+    const qEl = document.querySelector('.screen.active');
+    const qNum = parseInt(qEl.getAttribute('data-q'));
+    const w = weights[qNum] ? weights[qNum][letter] : null;
+    if(w){ Object.keys(w).forEach(c => countryScores[c] += w[c]); }
+    if(qNum < 8){ showScreen('q' + (qNum + 1)); } else { showScreen('email'); }
+  }
+
+  function pickCountries(persona){
+    const candidates = personaCandidates[persona];
+    const sorted = candidates.slice().sort((a,b) => countryScores[b] - countryScores[a]);
+    const primary = sorted[0];
+    let secondary = null;
+    if(sorted[1] && countryScores[sorted[1]] > 0 && (countryScores[primary] - countryScores[sorted[1]]) <= 3){
+      secondary = sorted[1];
+    }
+    return secondary ? [primary, secondary] : [primary];
+  }
+
+  function renderDynamicCountries(persona){
+    const picks = pickCountries(persona);
+    const flagsEl = document.getElementById('flags-' + persona);
+    const countriesEl = document.getElementById('countries-' + persona);
+    const flagsStr = picks.map(c => countryMeta[c].flag).join(' ');
+    const namesStr = picks.map(c => countryMeta[c].name).join(' & ');
+    if(flagsEl) flagsEl.textContent = flagsStr;
+    if(countriesEl) countriesEl.textContent = namesStr;
+    if(persona === 'A'){
+      const twEl = document.getElementById('tw-A');
+      if(twEl) twEl.textContent = namesStr;
+    }
+    return namesStr;
+  }
+
+  function computeResult(){
+    if(gatedLetter) return gatedLetter;
+    let best = 'A', bestScore = -1;
+    ['A','B','C','D'].forEach(k => { if(scores[k] > bestScore){ bestScore = scores[k]; best = k; } });
+    return best;
+  }
+  function encode(data){ return Object.keys(data).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&'); }
+
+  function handleSubmit(e){
+    e.preventDefault();
+    const email = document.getElementById('emailInput').value;
+    const website = document.getElementById('emailWebsite').value; // honeypot
+    const btn = document.getElementById('emailSubmitBtn');
+    const errEl = document.getElementById('emailError');
+    errEl.style.display = 'none';
+    btn.textContent = 'Checking…';
+    btn.disabled = true;
+
+    resultType = computeResult();
+    let countryStr = resultType === 'E' ? 'Singapore' : (resultType === 'F' ? 'Global Health Track' : renderDynamicCountries(resultType));
+
+    fetch('/.netlify/functions/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        firstName: '',
+        segmentId: CONFIG.segmentId,
+        website: website,
+        quizResult: resultType,
+        countryMatch: countryStr
+      })
+    })
+      .then(r => r.json())
+      .then(data => {
+        if(data && data.ok){
+          showScreen('result-' + resultType);
+        } else {
+          errEl.style.display = 'block';
+        }
+      })
+      .catch(() => { errEl.style.display = 'block'; })
+      .finally(() => { btn.textContent = 'Show me where to move!'; btn.disabled = false; });
+  }
+
+  function retake(){
+    Object.keys(scores).forEach(k => scores[k] = 0);
+    Object.keys(countryScores).forEach(k => countryScores[k] = 0);
+    credential = null; gatedLetter = null;
+    document.getElementById('emailInput').value = '';
+    document.querySelectorAll('.aprn-note').forEach(n => n.style.display = 'none');
+    showScreen('intro');
+  }
+  function copyShare(){
+    const name = document.querySelector('#result-' + resultType + ' .result-name').textContent;
+    const text = "I'm a " + name + "! Take the Nurse Abroad Country Selection Quiz and find out which country is the best fit for YOU! " + window.location.href;
+    navigator.clipboard.writeText(text).then(() => alert('Copied! Paste it anywhere.'));
+  }
+</script>
+</body>
+</html>
