@@ -30,16 +30,25 @@ exports.handler = async (event) => {
       method: "POST", headers,
       body: JSON.stringify(subscriberBody),
     });
+    const subText = await subRes.text();
+    console.log("Flodesk subscriber response:", subRes.status, subText);
     if (!subRes.ok) return resp(502, { ok: false, error: "Save failed" });
 
+    let subData = {};
+    try { subData = JSON.parse(subText); } catch {}
+    const subscriberId = subData.id || subData.subscriber_id || email;
+
     const segRes = await fetch(
-      `${FLODESK_API}/subscribers/${encodeURIComponent(email)}/segments`,
+      `${FLODESK_API}/subscribers/${encodeURIComponent(subscriberId)}/segments`,
       { method: "POST", headers, body: JSON.stringify({ segment_ids: [segmentId] }) }
     );
-    if (!segRes.ok) return resp(200, { ok: true, warn: "subscribed-but-segment-failed" });
+    const segText = await segRes.text();
+    console.log("Flodesk segment response:", segRes.status, segText);
+    if (!segRes.ok) return resp(200, { ok: true, warn: "subscribed-but-segment-failed", detail: segText });
 
     return resp(200, { ok: true });
   } catch (err) {
+    console.log("Connection error:", err.message);
     return resp(502, { ok: false, error: "Connection error" });
   }
 };
